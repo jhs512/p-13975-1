@@ -16,8 +16,8 @@ public class MemberDto {
 
     public MemberDto(Member member) {
         id = member.getId();
-        createDate = member.getCreateDate();
-        modifyDate = member.getModifyDate();
+        createDate = member.createDate;
+        modifyDate = member.modifyDate;
         name = member.getName();
         admin = member.isAdmin();
         profileImageUrl = member.getProfileImgUrlOrDefault();

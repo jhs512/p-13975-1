@@ -15,8 +15,8 @@ public class PostCommentDto {
 
     public PostCommentDto(PostComment postComment) {
         id = postComment.getId();
-        createDate = postComment.getCreateDate();
-        modifyDate = postComment.getModifyDate();
+        createDate = postComment.createDate;
+        modifyDate = postComment.modifyDate;
         authorId = postComment.getAuthor().getId();
         authorName = postComment.getAuthor().getName();
         postId = postComment.getPost().getId();

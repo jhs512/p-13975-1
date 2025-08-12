@@ -204,7 +204,7 @@ export interface components {
         RsDataVoid: {
             resultCode: string;
             msg: string;
-            data: unknown;
+            data?: unknown;
         };
         PostCommentModifyReqBody: {
             content: string;
@@ -232,7 +232,7 @@ export interface components {
         RsDataPostDto: {
             resultCode: string;
             msg: string;
-            data: components["schemas"]["PostDto"];
+            data?: components["schemas"]["PostDto"];
         };
         PostCommentWriteReqBody: {
             content: string;
@@ -254,7 +254,7 @@ export interface components {
         RsDataPostCommentDto: {
             resultCode: string;
             msg: string;
-            data: components["schemas"]["PostCommentDto"];
+            data?: components["schemas"]["PostCommentDto"];
         };
         MemberJoinReqBody: {
             username: string;
@@ -275,7 +275,7 @@ export interface components {
         RsDataMemberDto: {
             resultCode: string;
             msg: string;
-            data: components["schemas"]["MemberDto"];
+            data?: components["schemas"]["MemberDto"];
         };
         MemberLoginReqBody: {
             username: string;
@@ -289,7 +289,7 @@ export interface components {
         RsDataMemberLoginResBody: {
             resultCode: string;
             msg: string;
-            data: components["schemas"]["MemberLoginResBody"];
+            data?: components["schemas"]["MemberLoginResBody"];
         };
         PostWithContentDto: {
             /** Format: int32 */

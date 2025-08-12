@@ -14,8 +14,8 @@ public class PostDto {
 
     public PostDto(Post post) {
         id = post.getId();
-        createDate = post.getCreateDate();
-        modifyDate = post.getModifyDate();
+        createDate = post.createDate;
+        modifyDate = post.modifyDate;
         authorId = post.getAuthor().getId();
         authorName = post.getAuthor().getName();
         title = post.getTitle();
