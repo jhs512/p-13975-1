@@ -3,8 +3,6 @@ package com.back.domain.member.member.entity;
 import com.back.global.jpa.entity.BaseEntity;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 
@@ -14,8 +12,6 @@ import java.util.List;
 import java.util.UUID;
 
 @Entity
-@Getter
-@NoArgsConstructor
 public class Member extends BaseEntity {
     @Column(unique = true)
     private String username;
@@ -25,10 +21,13 @@ public class Member extends BaseEntity {
     private String apiKey;
     private String profileImgUrl;
 
-    public Member(int id, String username, String name) {
+    public Member() {
+    }
+
+    public Member(int id, String username, String nickname) {
         setId(id);
         this.username = username;
-        setName(name);
+        this.nickname = nickname;
     }
 
     public Member(String username, String password, String nickname, String profileImgUrl) {
@@ -39,12 +38,28 @@ public class Member extends BaseEntity {
         this.apiKey = UUID.randomUUID().toString();
     }
 
-    public String getName() {
+    public String getUsername() {
+        return username;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public String getNickname() {
         return nickname;
     }
 
-    public void setName(String name) {
-        this.nickname = name;
+    public String getApiKey() {
+        return apiKey;
+    }
+
+    public String getProfileImgUrl() {
+        return profileImgUrl;
+    }
+
+    public String getName() {
+        return nickname;
     }
 
     public void modifyApiKey(String apiKey) {

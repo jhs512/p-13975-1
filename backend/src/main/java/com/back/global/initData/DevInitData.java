@@ -1,7 +1,6 @@
 package com.back.global.initData;
 
 import com.back.standard.util.Ut;
-import lombok.RequiredArgsConstructor;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -9,7 +8,6 @@ import org.springframework.context.annotation.Profile;
 
 @Profile("dev")
 @Configuration
-@RequiredArgsConstructor
 public class DevInitData {
     @Bean
     ApplicationRunner devInitDataApplicationRunner() {

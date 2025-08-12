@@ -2,7 +2,6 @@ package com.back.global.security;
 
 import com.back.global.rsData.RsData;
 import com.back.standard.util.Ut;
-import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
@@ -20,11 +19,20 @@ import java.util.List;
 import static org.springframework.security.config.http.SessionCreationPolicy.STATELESS;
 
 @Configuration
-@RequiredArgsConstructor
 public class SecurityConfig {
     private final CustomAuthenticationFilter customAuthenticationFilter;
     private final AuthenticationSuccessHandler customOAuth2LoginSuccessHandler;
     private final CustomOAuth2AuthorizationRequestResolver customOAuth2AuthorizationRequestResolver;
+
+    public SecurityConfig(
+            CustomAuthenticationFilter customAuthenticationFilter,
+            AuthenticationSuccessHandler customOAuth2LoginSuccessHandler,
+            CustomOAuth2AuthorizationRequestResolver customOAuth2AuthorizationRequestResolver
+    ) {
+        this.customAuthenticationFilter = customAuthenticationFilter;
+        this.customOAuth2LoginSuccessHandler = customOAuth2LoginSuccessHandler;
+        this.customOAuth2AuthorizationRequestResolver = customOAuth2AuthorizationRequestResolver;
+    }
 
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {

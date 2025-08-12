@@ -7,7 +7,6 @@ import com.back.domain.member.member.service.MemberService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import io.swagger.v3.oas.annotations.tags.Tag;
-import lombok.RequiredArgsConstructor;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -18,11 +17,14 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/v1/adm/members")
-@RequiredArgsConstructor
 @Tag(name = "ApiV1AdmMemberController", description = "관리자용 API 회원 컨트롤러")
 @SecurityRequirement(name = "bearerAuth")
 public class ApiV1AdmMemberController {
     private final MemberService memberService;
+
+    public ApiV1AdmMemberController(MemberService memberService) {
+        this.memberService = memberService;
+    }
 
     @GetMapping
     @Transactional(readOnly = true)

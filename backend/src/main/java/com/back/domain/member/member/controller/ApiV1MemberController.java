@@ -14,19 +14,21 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
-import lombok.RequiredArgsConstructor;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/v1/members")
-@RequiredArgsConstructor
 @Tag(name = "ApiV1MemberController", description = "API 회원 컨트롤러")
 @SecurityRequirement(name = "bearerAuth")
 public class ApiV1MemberController {
     private final MemberService memberService;
     private final Rq rq;
 
+    public ApiV1MemberController(MemberService memberService, Rq rq) {
+        this.memberService = memberService;
+        this.rq = rq;
+    }
 
     record MemberJoinReqBody(
             @NotBlank

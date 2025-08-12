@@ -1,7 +1,6 @@
 package com.back.global.security;
 
 import jakarta.servlet.http.HttpServletRequest;
-import lombok.RequiredArgsConstructor;
 import org.springframework.security.oauth2.client.registration.ClientRegistrationRepository;
 import org.springframework.security.oauth2.client.web.DefaultOAuth2AuthorizationRequestResolver;
 import org.springframework.security.oauth2.client.web.OAuth2AuthorizationRequestRedirectFilter;
@@ -14,10 +13,13 @@ import java.util.Base64;
 import java.util.UUID;
 
 @Component
-@RequiredArgsConstructor
 public class CustomOAuth2AuthorizationRequestResolver implements OAuth2AuthorizationRequestResolver {
 
     private final ClientRegistrationRepository clientRegistrationRepository;
+
+public CustomOAuth2AuthorizationRequestResolver(ClientRegistrationRepository clientRegistrationRepository) {
+        this.clientRegistrationRepository = clientRegistrationRepository;
+    }
 
     private DefaultOAuth2AuthorizationRequestResolver createDefaultResolver() {
         // ✅ Spring Security 기본 Authorization URI 사용

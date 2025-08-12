@@ -13,7 +13,6 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
-import lombok.RequiredArgsConstructor;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
@@ -21,12 +20,16 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/v1/posts/{postId}/comments")
-@RequiredArgsConstructor
 @Tag(name = "ApiV1PostCommentController", description = "API 댓글 컨트롤러")
 @SecurityRequirement(name = "bearerAuth")
 public class ApiV1PostCommentController {
     private final PostService postService;
     private final Rq rq;
+
+    public ApiV1PostCommentController(PostService postService, Rq rq) {
+        this.postService = postService;
+        this.rq = rq;
+    }
 
     @GetMapping
     @Transactional(readOnly = true)

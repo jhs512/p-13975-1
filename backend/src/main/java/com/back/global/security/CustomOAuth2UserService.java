@@ -2,8 +2,6 @@ package com.back.global.security;
 
 import com.back.domain.member.member.entity.Member;
 import com.back.domain.member.member.service.MemberService;
-import lombok.RequiredArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.oauth2.client.userinfo.DefaultOAuth2UserService;
 import org.springframework.security.oauth2.client.userinfo.OAuth2UserRequest;
 import org.springframework.security.oauth2.core.OAuth2AuthenticationException;
@@ -14,10 +12,12 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.Map;
 
 @Service
-@RequiredArgsConstructor
-@Slf4j
 public class CustomOAuth2UserService extends DefaultOAuth2UserService {
     private final MemberService memberService;
+
+    public CustomOAuth2UserService(MemberService memberService) {
+        this.memberService = memberService;
+    }
 
     // 카카오톡 로그인이 성공할 때 마다 이 함수가 실행된다.
     @Override

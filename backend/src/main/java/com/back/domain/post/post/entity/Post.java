@@ -7,8 +7,6 @@ import com.back.global.jpa.entity.BaseEntity;
 import jakarta.persistence.Entity;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,8 +17,6 @@ import static jakarta.persistence.CascadeType.REMOVE;
 import static jakarta.persistence.FetchType.LAZY;
 
 @Entity
-@Getter
-@NoArgsConstructor
 public class Post extends BaseEntity {
     @ManyToOne
     private Member author;
@@ -30,10 +26,29 @@ public class Post extends BaseEntity {
     @OneToMany(mappedBy = "post", fetch = LAZY, cascade = {PERSIST, REMOVE}, orphanRemoval = true)
     private List<PostComment> comments = new ArrayList<>();
 
+    public Post() {
+    }
+
     public Post(Member author, String title, String content) {
         this.author = author;
         this.title = title;
         this.content = content;
+    }
+
+    public Member getAuthor() {
+        return author;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public String getContent() {
+        return content;
+    }
+
+    public List<PostComment> getComments() {
+        return comments;
     }
 
     public void modify(String title, String content) {

@@ -5,7 +5,6 @@ import com.back.domain.member.member.service.MemberService;
 import com.back.domain.post.post.entity.Post;
 import com.back.domain.post.post.service.PostService;
 import com.back.global.app.CustomConfigProperties;
-import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.context.annotation.Bean;
@@ -16,7 +15,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 @Profile("!prod")
 @Configuration
-@RequiredArgsConstructor
 public class NotProdInitData {
     @Autowired
     @Lazy
@@ -24,6 +22,12 @@ public class NotProdInitData {
     private final PostService postService;
     private final MemberService memberService;
     private final CustomConfigProperties customConfigProperties;
+
+    public NotProdInitData(PostService postService, MemberService memberService, CustomConfigProperties customConfigProperties) {
+        this.postService = postService;
+        this.memberService = memberService;
+        this.customConfigProperties = customConfigProperties;
+    }
 
     @Bean
     ApplicationRunner notProdInitDataApplicationRunner() {

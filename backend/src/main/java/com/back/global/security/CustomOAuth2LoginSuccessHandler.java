@@ -6,7 +6,6 @@ import com.back.global.rq.Rq;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 import org.springframework.stereotype.Component;
@@ -16,10 +15,14 @@ import java.nio.charset.StandardCharsets;
 import java.util.Base64;
 
 @Component
-@RequiredArgsConstructor
 public class CustomOAuth2LoginSuccessHandler implements AuthenticationSuccessHandler {
     private final MemberService memberService;
     private final Rq rq;
+
+    public CustomOAuth2LoginSuccessHandler(MemberService memberService, Rq rq) {
+        this.memberService = memberService;
+        this.rq = rq;
+    }
 
     @Override
     public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response, Authentication authentication) throws IOException, ServletException {

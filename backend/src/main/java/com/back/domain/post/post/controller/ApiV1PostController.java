@@ -1,7 +1,6 @@
 package com.back.domain.post.post.controller;
 
 import com.back.domain.member.member.entity.Member;
-import com.back.domain.member.member.service.MemberService;
 import com.back.domain.post.post.dto.PostDto;
 import com.back.domain.post.post.dto.PostWithContentDto;
 import com.back.domain.post.post.entity.Post;
@@ -14,7 +13,6 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
-import lombok.RequiredArgsConstructor;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
@@ -22,13 +20,16 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/v1/posts")
-@RequiredArgsConstructor
 @Tag(name = "ApiV1PostController", description = "API 글 컨트롤러")
 @SecurityRequirement(name = "bearerAuth")
 public class ApiV1PostController {
     private final PostService postService;
-    private final MemberService memberService;
     private final Rq rq;
+
+    public ApiV1PostController(PostService postService, Rq rq) {
+        this.postService = postService;
+        this.rq = rq;
+    }
 
     @GetMapping
     @Transactional(readOnly = true)

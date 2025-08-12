@@ -1,11 +1,9 @@
 package com.back.domain.post.postComment.dto;
 
 import com.back.domain.post.postComment.entity.PostComment;
-import lombok.Getter;
 
 import java.time.LocalDateTime;
 
-@Getter
 public class PostCommentDto {
     private final int id;
     private final LocalDateTime createDate;
@@ -23,5 +21,33 @@ public class PostCommentDto {
         authorName = postComment.getAuthor().getName();
         postId = postComment.getPost().getId();
         content = postComment.getContent();
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public LocalDateTime getCreateDate() {
+        return createDate;
+    }
+
+    public LocalDateTime getModifyDate() {
+        return modifyDate;
+    }
+
+    public int getAuthorId() {
+        return authorId;
+    }
+
+    public String getAuthorName() {
+        return authorName;
+    }
+
+    public int getPostId() {
+        return postId;
+    }
+
+    public String getContent() {
+        return content;
     }
 }
